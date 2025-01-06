@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .mainbox {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4CAF50;
+            background-color: #ffffff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/Logout"> <button style="width: 10%; height:10%;margin-left:100%;">LogOut</button></a>
+    <h1>Patient Form</h1>
+
+    <div class="mainbox">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="id_name">Name</label>
+                {{ form.name }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_age">Age</label>
+                {{ form.age }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_gender">Gender</label>
+                {{ form.gender }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_contact_number">Contact Number</label>
+                {{ form.contact_number }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_aadhar_or_kyc">Aadhar/KYC</label>
+                {{ form.aadhar_or_kyc }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_medical_concern">Medical Concern</label>
+                {{ form.medical_concern }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_treatment_advice">Treatment Advice</label>
+                {{ form.treatment_advice }}
+            </div>
+
+            <button type="submit">Save Patient</button>
+        </form>
+
+        {% if form.errors %}
+        <div class="error-message">
+            {% for field in form %}
+            {% for error in field.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

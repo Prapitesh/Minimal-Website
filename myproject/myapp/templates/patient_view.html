@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .details-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .patient-info {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .patient-info p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .patient-info strong {
+            color: #4CAF50;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-container a {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .btn-container a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Patient Details</h1>
+
+    <div class="details-container">
+        <div class="patient-info">
+            <p><strong>Name:</strong> {{ patient.name }}</p>
+            <p><strong>Age:</strong> {{ patient.age }}</p>
+            <p><strong>Gender:</strong> {{ patient.gender }}</p>
+            <p><strong>Contact:</strong> {{ patient.contact_number }}</p>
+            <p><strong>Aadhar/KYC:</strong> {{ patient.aadhar_or_kyc }}</p>
+            <p><strong>Medical Concern:</strong> {{ patient.medical_concern }}</p>
+            <p><strong>Treatment/Advice:</strong> {{ patient.treatment_advice }}</p>
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <a href="{% url 'patient_list' %}">Back to Patient List</a>
+        <a href="{% url 'edit_patient' patient.id %}">Edit Patient</a>
+    </div>
+
+</body>
+
+</html>
